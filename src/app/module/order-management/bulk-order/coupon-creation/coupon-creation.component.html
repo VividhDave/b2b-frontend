@@ -1,0 +1,97 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Bulk Order Price Negotiate</strong>
+          </div>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"> <a [routerLink]="['/order/bulk-order/bulk-order-list']">Bulk-Order-List</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Bulk-Order-Details-View</li>
+            </ol>
+          </nav>
+          <form [formGroup]="myGroup">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" class="form-control"
+                           formControlName="productName"
+                           id="productName" disabled="true">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="userName">User Name</label>
+                      <input type="text" class="form-control"
+                             formControlName="userName"
+                             id="userName" disabled="true">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                      <label for="requestQuantity">Request Quantity</label>
+                      <input type="text" class="form-control"
+                             formControlName="requestQuantity"
+                             id="requestQuantity" disabled="true">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                      <label for="userNegotiatePrice">User Negotiate Price</label>
+                      <input type="text" class="form-control"
+                             formControlName="userNegotiatePrice"
+                             id="userNegotiatePrice" disabled="true">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <input type="text" class="form-control"
+                             formControlName="description"
+                             id="description" disabled="true">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                      <label for="adminNegotiatePrice">Admin Negotiate Price</label>
+                      <input type="number" class="form-control"
+                             formControlName="adminNegotiatePrice"
+                             id="adminNegotiatePrice" min=0 oninput="validity.valid||(value='')"
+                             placeholder="Enter Price">
+                    </div>
+                    <div *ngIf="f.adminNegotiatePrice.invalid &&
+                                        (f.adminNegotiatePrice.dirty ||
+                                        f.adminNegotiatePrice.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.adminNegotiatePrice.errors.required">
+                                            Please enter price.
+                                        </span>
+                      </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <input type="text" class="form-control"
+                           formControlName="comment"
+                           id="comment"
+                           placeholder="Enter Comment">
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-sm
+                              btn-orange-theme"
+                      (click)="save()">
+                Save and Approve
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

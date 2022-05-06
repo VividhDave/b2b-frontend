@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Create a Promotion</strong>
+  </div>
+  <p-table #dt [value]="dataSource" [lazy]="true" [columns]="cols" (onLazyLoad)="loadData($event)" [rows]="10" class="table table-sm">
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-columns="columns">
+        <tr class="card-body">
+          <td>{{rowIndex + 1}}</td>
+          <td *ngFor="let col of columns">
+            <div *ngIf="!col?.subfield">
+              {{rowData[col.field]}}
+            </div>
+          </td>
+          <td>
+            <button pButton pRipple type="button" label="Create"
+                    class="action-btn btn-orange-theme" *ngIf="isCreate"
+                    (click)="onCreateEvent(rowData)">
+            </button>
+          </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>

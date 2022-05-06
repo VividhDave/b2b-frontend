@@ -1,0 +1,32 @@
+<div class="animated fadeIn">
+<div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Category List
+          
+          <div class="new-button">
+            <button type="button" class="btn btn-block btn-orange-theme" (click)="create()">New</button>
+          </div>
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page" >Category-List </li>
+            <li class="breadcrumb-item" aria-current="page" >Category-View </li>
+          </ol>
+        </nav>
+
+        <div class="card-body">
+         <app-table [cols]="cols" [dataSource]="dataSource" [totalElement]="totalElement" (onSortPaginateEvent)="getList($event)"
+         [isEdit]="true"
+             (editEvent)="edit($event)"
+          [isDelete]="true"
+              (deleteEvent)="delete($event)"
+             ></app-table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

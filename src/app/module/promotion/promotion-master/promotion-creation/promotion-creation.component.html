@@ -1,0 +1,26 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Promotion Master
+        </div>
+        <div class="card-body">
+          <tabset class="nav-fill">
+            <tab heading="Create a Promotion">
+              <app-card [cols]="cols" [dataSource]="dataSource" (onSortPaginateEvent)="getList($event)"
+                        [isCreate]="true" (createEvent)="create($event)">
+              </app-card>
+            </tab>
+            <tab heading="Manage Your Promotion">
+              <app-table [cols]="promotionCols" [dataSource]="promotionDataSource" (onSortPaginateEvent)="getPromotionList()">
+              </app-table>
+            </tab>
+            <tab id="ManageProductSelection" heading="Manage Product Selection">
+            </tab>
+          </tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

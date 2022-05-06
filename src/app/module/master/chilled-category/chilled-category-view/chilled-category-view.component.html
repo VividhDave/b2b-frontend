@@ -1,0 +1,107 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Child Category</strong>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"> <a [routerLink]="['/master/chilled-category/chilled-category-list']">Child-Category-List</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Child-Category-View</li>
+                    </ol>
+                  </nav>
+                <form [formGroup]="chilledCategoryForm">
+                    <div class="card-body">
+                        <div class="row" *ngIf="id&&urls">
+                            <div class="col-sm-12" >
+                                <img src="{{'data:image/jpg;base64,' +
+                                    urls}}"
+                                    class="rounded mb-3" width="180">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="name">Child Category Name</label>
+                                    <input type="text" class="form-control"
+                                        formControlName="name" id="name"
+                                        placeholder="Enter child category name">
+                                    <div *ngIf="f.name.invalid &&
+                                        (f.name.dirty ||
+                                        f.name.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.name.errors.required">
+                                            Please enter child category name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="code">Child Category Code</label>
+                                    <input type="text" formControlName="code"
+                                        class="form-control"
+                                        id="code" placeholder="Enter child category code">
+                                    <div *ngIf="f.code.invalid &&
+                                        (f.code.dirty ||
+                                        f.code.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.code.errors.required">
+                                            Please enter child category code.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" formGroupName="subCategory">
+                            <div class="col-md-12">
+                                <label for="select3">Select Sub Category</label>
+                                <select id="select3"
+                                    formControlName="id"
+                                    class="form-control form-control-sm">
+                                    <option value="">Please select</option>
+                                    <option *ngFor="let group of subCategoryList"
+                                        [value]="group.id">
+                                        {{group.name}}</option>
+                                </select>
+                                <div *ngIf="f1.id.invalid &&
+                                    (f1.id.dirty ||
+                                    f1.id.touched)"
+                                    class="error-message">
+                                    <span
+                                        *ngIf="f1.id.errors.required">
+                                        Please select subcategory.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" *ngIf="id">
+                            <div class="form-group">
+                                <label for="name" *ngIf="!urls">Add brand Image</label>
+                                <label for="name" *ngIf="urls">Update brand Image</label>
+                                <input type="file" id="file-multiple-input"
+                                    (change)="handle($event.target.files)"
+                                    name="file-multiple-input"
+                                    accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme"
+                            (click)="save()"><i class="fa fa-dot-circle-o"></i>
+                            Submit</button>
+                            &nbsp;&nbsp;
+                            <button type="submit" class="btn btn-sm
+                                btn-orange-theme"
+                                (click)="back()"><i class="fa fa-dot-circle-o"></i>
+                                Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

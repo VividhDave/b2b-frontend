@@ -1,0 +1,46 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <!-- <div class="card-header"> -->
+
+                <div class='row' style='margin: 20px'>
+                    <div class='col-4'>
+                        <div class='row'>
+                            <div class='col-1'>
+                                <i class="fa fa-align-justify"></i>
+                            </div>
+                            <div class='col-11'>
+                                <p style='margin-left: -12px'>Mobile User List</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class='col-6'>
+                        <div class='row'>
+                            <div class='col-1'>
+                                <i style='margin-top: 2px; color: coral ; opacity: 0.8;' class='fa fa-search fa-2x'></i>
+                            </div>
+                            <div class='col-5'>
+                                <div class="input-group rounded" style='width: 100%'>
+                                    <input type="search" class="form-control rounded" placeholder="Search by username"
+                                        aria-label="Search" aria-describedby="search-addon" (keyup)="filter($event.target.value)"
+                                        style='border-color: grey;' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-2'>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <app-table [cols]="cols" [dataSource]="dataSource" [totalElement]="totalElement"
+                        (onSortPaginateEvent)="getList($event)"></app-table>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>

@@ -1,0 +1,90 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Add Product Using File
+        </div>
+        <div class="card-body">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="name">Save Product File</label>
+                  <input type="file" id="file-multiple-input" (change)="handle($event.target.files)"
+                    name="file-multiple-input"
+                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                  <div>
+                    <!-- <i type="submit" class="fa fa-refresh fa-2x" aria-hidden="true" (click)="fileReset()"></i> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6" style="text-align: right;">
+                <button type="submit" class="btn btn-sm
+                  btn-orange-theme" (click)="saveProductUsingFile()"><i class="fa fa-plus-circle"></i>
+                  Save Product</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class='row' style='margin: 20px'>
+          <div class='col-4'>
+            <div class='row'>
+              <div class='col-1'>
+                <i class="fa fa-align-justify"></i>
+              </div>
+              <div class='col-11'>
+                <p style='margin-left: -12px'>Product List</p>
+              </div>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item" aria-current="page" >Product-List </li>
+                  <li class="breadcrumb-item" aria-current="page" >Product-View </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+
+          <div class='col-6'>
+            <div class='row'>
+              <div class='col-1'>
+                <i style='margin-top: 2px; color: coral ; opacity: 0.8;' class='fa fa-search fa-2x'></i>
+              </div>
+              <div class='col-5'>
+                <div class="input-group rounded" style='width: 100%'>
+                  <input type="search" class="form-control rounded" placeholder="Search..." aria-label="Search"
+                    aria-describedby="search-addon" style='border-color: grey;' (keyup)="filter($event.target.value)" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='col-2'>
+            <div class="new-button">
+              <button type="button" class="btn btn-block btn-orange-theme" (click)="create()">New</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- </div> -->
+        <div class="card-body">
+          <app-table [cols]="cols" [dataSource]="dataSource" [totalElement]="totalElement"
+            (onSortPaginateEvent)="getList($event)" [isEdit]="true" (editEvent)="edit($event)" [isDelete]="true"
+            (deleteEvent)="delete($event)">
+          </app-table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

@@ -1,0 +1,68 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Brand</strong>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"> <a [routerLink]="['/master/brand/brand-list']">Brand-List</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Brand-View</li>
+                    </ol>
+                  </nav>
+                <form [formGroup]="brandForm">
+                    <div class="card-body">
+                        <div class="row" *ngIf="id&&urls">
+                            <div class="col-sm-12" >
+                                <img src="{{'data:image/jpg;base64,' +
+                                    urls}}"
+                                    class="rounded mb-3" width="180">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="name">Brand Name</label>
+                                    <input type="text" formControlName="name"
+                                        class="form-control"
+                                        id="name"
+                                        placeholder="Enter brand name">
+                                    <div *ngIf="f.name.invalid &&
+                                        (f.name.dirty ||
+                                        f.name.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.name.errors.required">
+                                            Please enter brand name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12" *ngIf="id">
+                                <div class="form-group">
+                                    <label for="name" *ngIf="!urls">Add brand Image</label>
+                                    <label for="name" *ngIf="urls">Update brand Image</label>
+                                    <input type="file" id="file-multiple-input"
+                                        (change)="handle($event.target.files)"
+                                        name="file-multiple-input"
+                                        accept="image/*">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme" (click)="save()"><i class="fa
+                                fa-dot-circle-o"></i> Submit</button>
+                                &nbsp;&nbsp;
+                                <button type="submit" class="btn btn-sm
+                                    btn-orange-theme"
+                                    (click)="back()"><i class="fa fa-dot-circle-o"></i>
+                                    Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

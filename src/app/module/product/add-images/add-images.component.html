@@ -1,0 +1,44 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Category</strong>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"> <a [routerLink]="['/product/product-list']">Product-List</a></li>
+                      <li class="breadcrumb-item"><a [routerLink]="['/product/product-view']">Product-View</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Add-Image</li>
+                    </ol>
+                  </nav>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="name">Select Image</label>
+                                <input type="file" id="file-multiple-input" (change)="handle($event.target.files)"
+                                    name="file-multiple-input" accept="image/*" multiple>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" *ngFor="let url of urls">
+                            <img [src]="url" class="rounded mb-3" width="180">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-sm
+                        btn-orange-theme" (click)="save()"><i class="fa fa-dot-circle-o"></i>
+                        Submit</button>
+
+                    <button type="submit" class="btn btn-sm
+                        btn-orange-theme" (click)="back()"><i class="fa fa-dot-circle-o"></i>
+                        Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

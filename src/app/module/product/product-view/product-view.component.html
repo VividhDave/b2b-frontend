@@ -1,0 +1,363 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Product</strong>
+                </div>
+
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"> <a [routerLink]="['/product/product-list']">Product-List</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Product-View</li>
+                    </ol>
+                  </nav>
+                  
+                <form [formGroup]="productForm">
+                    <div class="card-body">
+                        <div class="row" *ngIf="id">
+                            <div class="col-sm-6">
+                                <p>Product Image</p>
+                            </div>
+                            <div class="col-sm-6" style="text-align: right;">
+                                <button type="submit" class="btn btn-sm
+                                    btn-orange-theme"  (click)="addImage()"><i class="fa
+                                        f   a-plus-circle"></i>
+                                    Add  Image</button>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="id">
+                            <div class="col-sm-4" *ngFor="let url of urls; let i = index">
+                                <img src="{{'data:image/jpg;base64,' +
+                                    url.image  }}" class="rounded mb-3" width="180">
+                                <i class='fa fa-trash fa-2x' style='color: coral' (click)='deleteImage(url.id)'></i>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group" formGroupName="category">
+                                    <label for="select3">Select Category</label>
+                                    <select id="select3" (change)="changeDropDownValue($event,'category')"
+                                        formControlName="id" class="form-control">
+                                        <option value="">Please select</option>
+                                        <option *ngFor="let group of
+                                            categoryList" [value]="group.id">
+                                            {{group.name}}</option>
+                                    </select>
+                                    <div *ngIf="c.id.invalid &&
+                                        (c.id.dirty ||
+                                        c.id.touched)" class="error-message">
+                                        <span *ngIf="c.id.errors.required">
+                                            Please select category.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group" formGroupName="subCategory">
+                                    <label for="select3">Select Sub Category</label>
+                                    <select id="select3" (change)="changeDropDownValue($event,'subCategory')"
+                                        formControlName="id" class="form-control">
+                                        <option value="">Please select</option>
+                                        <option *ngFor="let group of
+                                            subCategoryList" [value]="group.id">
+                                            {{group.name}}</option>
+                                    </select>
+                                    <div *ngIf="sb.id.invalid &&
+                                        (sb.id.dirty ||
+                                        sb.id.touched)" class="error-message">
+                                        <span *ngIf="sb.id.errors.required">
+                                            Please select sub category.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group" formGroupName="chilledCategory">
+                                    <label for="select3">Select Child Category</label>
+                                    <select id="select3" (change)="changeDropDownValue($event,'chilledCategory')"
+                                        formControlName="id" class="form-control">
+                                        <option value="">Please select</option>
+                                        <option *ngFor="let group of
+                                            chilledCategoryList" [value]="group.id">
+                                            {{group.name}}</option>
+                                    </select>
+                                    <div *ngIf="ch.id.invalid &&
+                                        (ch.id.dirty ||
+                                        ch.id.touched)" class="error-message">
+                                        <span *ngIf="ch.id.errors.required">
+                                            Please select sub category.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group" formGroupName="brand">
+                                    <label for="select3">Select Brand</label>
+                                    <select id="select3" (change)="changeDropDownValue($event,'brand')"
+                                        formControlName="id" class="form-control">
+                                        <option value="">Please select</option>
+                                        <option *ngFor="let group of
+                                            brandList" [value]="group.id">
+                                            {{group.name}}</option>
+                                    </select>
+                                    <div *ngIf="br.id.invalid &&
+                                        (br.id.dirty ||
+                                        br.id.touched)" class="error-message">
+                                        <span *ngIf="br.id.errors.required">
+                                            Please select brand.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Product Name</label>
+                                    <input type="text" class="form-control" formControlName="productName"
+                                        id="productName" placeholder="Enter product name">
+                                    <div *ngIf="f.productName.invalid &&
+                                        (f.productName.dirty ||
+                                        f.productName.touched)" class="error-message">
+                                        <span *ngIf="f.productName.errors.required">
+                                            Please enter product name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="productCode">Product Code</label>
+                                    <input type="text" class="form-control" formControlName="productCode"
+                                        id="productCode" min=0 oninput="validity.valid||(value='')"
+                                        placeholder="Enter product productCode">
+                                    <div *ngIf="f.productCode.invalid &&
+                                        (f.productCode.dirty ||
+                                        f.productCode.touched)" class="error-message">
+                                        <span *ngIf="f.productCode.errors.required">
+                                            Please enter product code.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="hsnCode">HSN Code</label>
+                                    <input type="text" class="form-control" formControlName="hsnCode" id="hsnCode"
+                                        placeholder="Enter product name">
+                                    <div *ngIf="f.hsnCode.invalid &&
+                                        (f.hsnCode.dirty ||
+                                        f.hsnCode.touched)" class="error-message">
+                                        <span *ngIf="f.hsnCode.errors.required">
+                                            Please enter HSN code.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="technicalName">Technical Name</label>
+                                    <input type="text" class="form-control" formControlName="technicalName"
+                                        id="technicalName" placeholder="Enter product name">
+                                    <div *ngIf="f.technicalName.invalid &&
+                                        (f.technicalName.dirty ||
+                                        f.technicalName.touched)" class="error-message">
+                                        <span *ngIf="f.technicalName.errors.required">
+                                            Please enter technical name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="packaging">Packaging</label>
+                                    <input type="text" class="form-control" formControlName="packaging" id="packaging"
+                                        placeholder="Enter product name">
+                                    <div *ngIf="f.packaging.invalid &&
+                                        (f.packaging.dirty ||
+                                        f.packaging.touched)" class="error-message">
+                                        <span *ngIf="f.packaging.errors.required">
+                                            Please enter packaging.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="name">Price(₹)</label>
+                                    <input type="number" value="0.001" step="0.01" class="form-control" formControlName="price" id="price" min=0
+                                        oninput="validity.valid||(value='')" placeholder="Enter price">
+                                    <div *ngIf="f.price.invalid &&
+                                        (f.price.dirty ||
+                                        f.price.touched)" class="error-message">
+                                        <span *ngIf="f.price.errors.required">
+                                            Please enter price upto 2 decimals only.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="qty">Qty</label>
+                                    <input type="number" class="form-control" formControlName="qty" id="qty" min=0
+                                        oninput="validity.valid||(value='')" placeholder="Enter qty">
+                                    <div *ngIf="f.qty.invalid &&
+                                        (f.qty.dirty ||
+                                        f.qty.touched)" class="error-message">
+                                        <span *ngIf="f.qty.errors.required">
+                                            Please enter qty.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="discountPrice">Discount Price(₹)</label>
+                                    <input type="number" value="0.001" step="0.01" class="form-control" formControlName="discountPrice"
+                                        id="discountPrice" min=0 oninput="validity.valid||(value='')"
+                                        placeholder="Enter Price">
+                                    <div *ngIf="f.discountPrice.invalid &&
+                                        (f.discountPrice.dirty ||
+                                        f.discountPrice.touched)" class="error-message">
+                                        <span *ngIf="f.discountPrice.errors.required">
+                                            Please enter price upto 2 decimals only.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="shippingCharge">Shipping Cost(₹)</label>
+                                    <input type="number" value="0.001" step="0.01" class="form-control" formControlName="shippingCharge"
+                                        id="shippingCharge" min=0 oninput="validity.valid||(value='')"
+                                        placeholder="Enter Cost">
+                                    <div *ngIf="f.shippingCharge.invalid &&
+                                        (f.shippingCharge.dirty ||
+                                        f.shippingCharge.touched)" class="error-message">
+                                        <span *ngIf="f.shippingCharge.errors.required">
+                                            Please Shipping Cost.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Margin</label>
+                                    <input type="number" class="form-control" formControlName="margin" id="margin"
+                                        placeholder="Enter margin in (%)">
+                                    <div *ngIf="f.displayName.invalid &&
+                                        (f.displayName.dirty ||
+                                        f.displayName.touched)" class="error-message">
+                                        <span *ngIf="f.displayName.errors.required">
+                                            Please enter margin.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Product Display Name</label>
+                                    <input type="text" class="form-control" formControlName="displayName"
+                                        id="displayName" placeholder="Enter product display name">
+                                    <div *ngIf="f.displayName.invalid &&
+                                        (f.displayName.dirty ||
+                                        f.displayName.touched)" class="error-message">
+                                        <span *ngIf="f.displayName.errors.required">
+                                            Please enter product display name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Description</label>
+                                    <input type="text" class="form-control" formControlName="description"
+                                        id="description" placeholder="Enter description">
+                                    <div *ngIf="f.description.invalid &&
+                                        (f.description.dirty ||
+                                        f.description.touched)" class="error-message">
+                                        <span *ngIf="f.description.errors.required">
+                                            Please enter description.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="name">Specification</label>
+                                    <input type="text" class="form-control" formControlName="specification"
+                                        id="specification" placeholder="Enter Specification">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row" formArrayName="attribute">
+                            <div class="col-sm-4" *ngFor="let attr of
+                                attributeList; let i= index;">
+                                <div [formGroupName]="i">
+                                    <div class="form-group"
+                                        *ngIf="attr?.type=='string'">
+                                        <label for="name">{{attr?.name}}</label>
+                                        <input type="text" class="form-control"
+                                            formControlName="value"
+                                            placeholder="Enter {{attr?.name}}"> -->
+                        <!-- <div *ngIf="productForm.controls.attribute.controls[i].controls.[attr?.key].invalid && (productForm.controls.attribute.controls[i].controls[attr?.key].dirty || productForm.controls.attribute.controls[i].controls[attr?.key].touched)"
+                                            class="error-message">
+                                            <span>
+                                                Please enter {{attr?.name}}.
+                                            </span>
+                                        </div> -->
+                        <!-- </div>
+                                    <div class="form-group"
+                                        *ngIf="attr?.type=='int'">
+                                        <label for="name">{{attr?.name}}</label>
+                                        <input type="number"
+                                            class="form-control"
+                                            formControlName="value"
+                                            placeholder="Enter {{attr?.name}}"> -->
+                        <!-- <div *ngIf="productForm.controls.attribute.controls[i].controls.[attr?.key].invalid && (productForm.controls.attribute.controls[i].controls[attr?.key].dirty || productForm.controls.attribute.controls[i].controls[attr?.key].touched)"
+                                        class="error-message">
+                                        <span>
+                                            Please enter {{attr?.name}}.
+                                        </span>
+                                    </div> -->
+                        <!-- </div>
+                                    <div class="form-group"
+                                        *ngIf="attr?.type=='textbox'">
+                                        <label for="name">{{attr?.name}}</label>
+                                        <textarea id="textarea-input"
+                                            name="textarea-input"
+                                            class="form-control"
+                                            formControlName="value"
+                                            placeholder="Enter {{attr?.name}}"></textarea> -->
+                        <!-- <div *ngIf="productForm.controls.attribute.controls[i].controls.[attr?.key].invalid && (productForm.controls.attribute.controls[i].controls[attr?.key].dirty || productForm.controls.attribute.controls[i].controls[attr?.key].touched)"
+                                    class="error-message">
+                                    <span>
+                                        Please enter {{attr?.name}}.
+                                    </span>
+                                </div> -->
+                        <!-- </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme" (click)="save()"><i class="fa fa-dot-circle-o"></i>
+                            Submit</button>
+                        &nbsp;&nbsp;
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme" (click)="back()"><i class="fa fa-dot-circle-o"></i>
+                            Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

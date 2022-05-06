@@ -1,0 +1,104 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+
+@import "~primeicons/primeicons.css";
+
+.loader {
+  background: rgba(0, 0, 0, 0.36);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+
+  visibility: hidden;
+  z-index: 10000;
+  padding-top: 35vh;
+  text-align: center;
+}
+
+.loading {
+  visibility: visible;
+}
+
+.loader-img {
+  width: 20%;
+  // background: rgba(0, 0, 0, 0.29);
+  border-radius: 8px;
+}
+
+.new-button {
+  float: right;
+}
+
+.sidebar {
+  background: orange;
+}
+
+.sidebar .nav-link {
+  color: black !important;
+}
+
+.sidebar .nav-title {
+  color: black;
+}
+
+.sidebar .nav-dropdown.open {
+  background: none;
+}
+
+.sidebar .nav-link.active {
+  background: #58aeef;
+}
+
+.sidebar .nav-dropdown.open .nav-link {
+  color: black;
+}
+
+.btn-orange-theme {
+  background-color: orange !important;
+  color: #fff !important;
+  border-color: #ffa500 !important;
+}
+
+.p-toast {
+  z-index: 2000 !important;
+}
+
+.p-toast .p-toast-message.p-toast-message-success {
+  background: #f8ce7f;
+  border: solid #ffa500;
+}
+
+.error-message {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #f86c6b;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+  position: unset!important;
+  left: 0px!important;
+  top: 0px!important;
+  transform: none!important;
+  opacity: unset!important;
+}

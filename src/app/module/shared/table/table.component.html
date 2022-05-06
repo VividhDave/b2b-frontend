@@ -1,0 +1,96 @@
+<p-table #dt [value]="dataSource" [lazy]="true" [columns]="cols" (onLazyLoad)="loadData($event)" dataKey="id"
+    styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [totalRecords]="totalElement"
+    [showCurrentPageReport]="true" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of
+    {totalRecords} entries" [filterDelay]="0" [responsive]="true">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" pSortableColumn="{{col.sort}}">
+                <div class="p-d-flex p-jc-between p-ai-center" style='font-size: 14px;'>
+                    {{col.header}}
+                    <p-sortIcon field="{{col?.sort}}" *ngIf="col?.sort"></p-sortIcon>
+                </div>
+            </th>
+            <th *ngIf="isEdit">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Edit
+                </div>
+            </th>
+            <th *ngIf="isEditBulk">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Edit
+                </div>
+            </th>
+            <th *ngIf="isApprove">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Approve
+                </div>
+            </th>
+            <th *ngIf="isReject">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Reject
+                </div>
+            </th>
+            <th *ngIf="isDetails">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Details
+                </div>
+            </th>
+            <th *ngIf="isDelete">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    Delete
+                </div>
+            </th>
+        </tr>
+
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-columns="columns">
+        <tr class="p-selectable-row" style='font-size: 12px;'>
+            <td *ngFor="let col of columns">
+                <div id="1" *ngIf="!col?.subfield">
+                    {{rowData[col.field]}}
+                </div>
+                <div id="2" *ngIf="col?.subfield&&rowData[col.field]!==null&&!col?.innerSubField">
+                    {{rowData[col.field][col.subfield]}}
+                </div>
+
+                <div id="3" *ngIf="col?.subfield&&col?.innerSubField&&rowData[col.field]!==null">
+                    {{rowData[col.field][col.subfield][col.innerSubField]}}
+                </div>
+
+
+            </td>
+            <td *ngIf="isEdit">
+                <i class="fa fa-pencil fa-2x" aria-hidden="true" style='color: orange;' *ngIf="isEdit"
+                    (click)="onEditEvent(rowData)"></i>
+            </td>
+            <td *ngIf="isEditBulk">
+                <button class="btn btn-warning" aria-hidden="true" *ngIf="isEditBulk"
+                    [disabled]="rowData.editDisabled ? true : null" (click)="onEditBulkEvent(rowData)">Edit</button>
+            </td>
+            <td *ngIf="isDetails">
+                <i class="fa fa-info-circle fa-2x" aria-hidden="true" style='color: orange;' *ngIf="isDetails"
+                    (click)="onDetailsEvent(rowData)"></i>
+            </td>
+            <td *ngIf="isApprove">
+                <button class="btn btn-warning" aria-hidden="true" *ngIf="isApprove"
+                    [disabled]="rowData.approvedDisabled ? true : null"
+                    (click)="onApproveEvent(rowData)">Approve</button>
+            </td>
+            <td *ngIf="isReject">
+                <button class="btn btn-warning" aria-hidden="true" *ngIf="isReject"
+                    [disabled]="rowData.rejectDisabled ? true : null" (click)="onRejectEvent(rowData)">Reject</button>
+            </td>
+            <td *ngIf="isDelete">
+                <i class="fa fa-trash fa-2x" aria-hidden="true" style='color: orange;' *ngIf="isDelete"
+                    (click)="onDeleteEvent(rowData)"></i>
+            </td>
+        </tr>
+
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr class="spinner-border text-warning" role="status"
+            style='margin-left: 80ex; margin-top: 50px; font-size: 15px;'>
+            <td [attr.colspan]="colSpanValue"><span class="sr-only"></span></td>
+        </tr>
+    </ng-template>
+</p-table>

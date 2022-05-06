@@ -1,0 +1,28 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Bulk Order
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page" >Bulk-Order-List </li>
+            <li class="breadcrumb-item" aria-current="page" >Bulk-Order-View </li>
+          </ol>
+        </nav>
+        <div class="card-body">
+          <!-- <button type="button" (click)="actionMethod($event)" class="btn btn-primary">Give Kitchen access</button> -->
+          <app-table [cols]="cols" [dataSource]="dataSource" [totalElement]="totalElement"
+            (onSortPaginateEvent)="getList($event)" [isApprove]="true"
+            (approveEvent)="approveOrRejectBulkOrder($event, 'true', 'APPROVE_BY_ADMIN')" [isReject]="true"
+            (rejectEvent)="approveOrRejectBulkOrder($event, 'false', 'REJECT_BY_ADMIN')" [isEditBulk]="true"
+            (editBulkEvent)="editBulkOrder($event)" >
+          </app-table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

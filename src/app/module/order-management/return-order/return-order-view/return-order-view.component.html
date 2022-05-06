@@ -1,0 +1,436 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i>Return Order Details <strong>{{this.id}}</strong>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"> <a [routerLink]="['/order/return-order/return-order-list']">Return-Order-List</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Return-Order-Details-View</li>
+                    </ol>
+                  </nav>
+                <div class="card-body">
+                    <tabset class="nav-fill">
+                        <tab heading="Return Order Details">
+                            <div class="card">
+                                <form [formGroup]="orderFrom">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3>Return Order Details</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!-- <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="id">Id</label>
+                                                    <input type="text"
+                                                        formControlName="id"
+                                                        class="form-control"
+                                                        id="id">
+                                                </div>
+                                            </div> -->
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="productTotalAmount">
+                                                        Product Total Amount</label>
+                                                    <input type="text" formControlName="productTotalAmount"
+                                                        class="form-control" id="productTotalAmount">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="shippingCharge">Shipping
+                                                        Charge</label>
+                                                    <input type="text" formControlName="shippingCharge"
+                                                        class="form-control" id="shippingCharge">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="discount">Discount</label>
+                                                    <input type="text" formControlName="discount" class="form-control"
+                                                        id="discount">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="orderDate">
+                                                        Order Date</label>
+                                                    <input type="text" formControlName="orderDate" class="form-control"
+                                                        id="orderDate">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="totalSaleAmount">Total
+                                                        Sale Amount</label>
+                                                    <input type="text" formControlName="totalSaleAmount"
+                                                        class="form-control" id="totalSaleAmount">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="remark">Remark</label>
+                                                    <input type="text" formControlName="remark" class="form-control"
+                                                        id="remark">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="promoCode">
+                                                        Promo Code</label>
+                                                    <input type="text" formControlName="promoCode" class="form-control"
+                                                        id="promoCode">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="status">status</label>
+                                                    <input type="text" formControlName="status" class="form-control"
+                                                        id="status">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3>User Details</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!-- <div class="col-sm-4">
+                                                <div class="form-group"
+                                                    formGroupName="user">
+                                                    <label for="id">Id</label>
+                                                    <input type="text"
+                                                        formControlName="id"
+                                                        class="form-control"
+                                                        id="id">
+                                                </div>
+                                            </div> -->
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="user">
+                                                    <label for="username">
+                                                        User Name</label>
+                                                    <input type="text" formControlName="username" class="form-control"
+                                                        id="username">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="user">
+                                                    <label for="email">Email</label>
+                                                    <input type="text" formControlName="email" class="form-control"
+                                                        id="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="user">
+                                                    <label for="gstin">GSTIN</label>
+                                                    <input type="text" formControlName="gstin" class="form-control"
+                                                        id="gstin">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="user">
+                                                    <label for="customerId">Customer
+                                                        Id</label>
+                                                    <input type="text" formControlName="customerId" class="form-control"
+                                                        id="customerId">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="user">
+                                                    <label for="firstName">First
+                                                        Name</label>
+                                                    <input type="text" formControlName="firstName" class="form-control"
+                                                        id="firstName">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3>Address Details</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!-- <div class="col-sm-4">
+                                                <div class="form-group"
+                                                    formGroupName="deliveryAddress">
+                                                    <label for="id">Id</label>
+                                                    <input type="text"
+                                                        formControlName="id"
+                                                        class="form-control"
+                                                        id="id">
+                                                </div>
+                                            </div> -->
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="deliveryAddress">
+                                                    <label for="address">
+                                                        Address</label>
+                                                    <input type="text" formControlName="address" class="form-control"
+                                                        id="address">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="deliveryAddress">
+                                                    <label for="city">City</label>
+                                                    <input type="text" formControlName="city" class="form-control"
+                                                        id="city">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="deliveryAddress">
+                                                    <label for="state">State</label>
+                                                    <input type="text" formControlName="state" class="form-control"
+                                                        id="state">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="deliveryAddress">
+                                                    <label for="pincode">Pin
+                                                        Code</label>
+                                                    <input type="text" formControlName="pincode" class="form-control"
+                                                        id="pincode">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group" formGroupName="deliveryAddress">
+                                                    <label for="phone">Phone</label>
+                                                    <input type="text" formControlName="phone" class="form-control"
+                                                        id="phone">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </tab>
+                        <tab heading="Track Return Order Status">
+                            <div class="card">
+                                <div class="card-header">
+                                    <i class="fa fa-align-justify"></i>Status
+                                    <div class="new-button">
+                                        <button type="button"   class="btn
+                                            btn-block btn-orange-theme" (click)="successModal2.show()">Change Order Status</button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <app-table [cols]="returnOrderStatusCol" [dataSource]="returnOrderStatusDataSource"
+                                        [totalElement]="statusTotalElement"
+                                        (onSortPaginateEvent)="getReturnOrderStatusList($event)">
+                                    </app-table>
+                                </div>
+                            </div>
+                        </tab>
+                        <tab id="ManageProductSelection" heading="Return Order
+                            Product
+                            Details">
+                            <div class="card">
+                                <div class="card-header">
+                                    <i class="fa fa-align-justify"></i>Return
+                                    Order List
+                                    <div class="new-button" *ngIf="orderDetails?.payed">
+                                        <button type="button" class="btn
+                                            btn-block btn-orange-theme" (click)="successModal.show()">Return
+                                            Amount</button>
+                                    </div>
+                                    <!-- <div class="new-button" style="color: red;" *ngIf="!orderDetails?.payed">
+                                        Payment not done by user
+                                    </div> -->
+                                </div>
+                                <div class="card-body">
+                                    <app-table [cols]="cols" [dataSource]="productDataSource"
+                                        [totalElement]="totalElement" (onSortPaginateEvent)="getList($event)">
+                                    </app-table>
+                                </div>
+                            </div>
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div bsModal #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Change Order Status</h4>
+                <button type="button" class="close" (click)="successModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <form [formGroup]="returnOrderFrom">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    Product Name
+                                </div>
+                                <div class="col-sm-2">
+                                    Price
+                                </div>
+                                <div class="col-sm-2">
+                                    QTY
+                                </div>
+                                <div class="col-sm-2">
+                                    Total
+                                </div>
+                            </div>
+                            <div class="row" *ngFor="let returnProduct of productDetailList">
+                                <div class="col-sm-6">
+                                    {{returnProduct?.name}}
+                                </div>
+                                <div class="col-sm-2">
+                                    {{returnProduct?.price}}
+                                </div>
+                                <div class="col-sm-2">
+                                    {{returnProduct?.qty}}
+                                </div>
+                                <div class="col-sm-2">
+                                    {{returnProduct?.totalPrice}}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    Shipping Charge
+                                </div>
+                                <div class="col-sm-2">
+                                    - {{shippingCharge}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    Discount
+                                </div>
+                                <div class="col-sm-2">
+                                    - {{discount}}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    Sub Total
+                                </div>
+                                <div class="col-sm-2">
+                                    {{returnTotalPrice}}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="amount">Enter Return Amount</label>
+                                        <input type="text" formControlName="amount" class="form-control" id="amount"
+                                            placeholder="Enter description">
+                                        <div *ngIf="f1.amount.invalid &&
+                                            (f1.amount.dirty ||
+                                            f1.amount.touched)" class="error-message">
+                                            <span *ngIf="f1.amount.errors.required">
+                                                Please enter amount.
+                                            </span>
+                                        </div>
+                                        <div *ngIf="errorMessage" class="error-message">
+                                            <span>
+                                                {{errorMessage}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="successModal.hide()">Close</button>
+                <button type="button" class="btn btn-success" (click)="returnAmount()">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #successModal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Change Order Status</h4>
+                <button  type="button" class="close" (click)="successModal2.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <form [formGroup]="orderStatusFrom">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="select3">Select Order Status</label>
+                                    <select id="select3" formControlName="statusMessage"
+                                        class="form-control form-control-sm">
+                                        <option value="">Please select</option>
+                                        <option *ngFor="let group of orderStatus" [value]="group.id">
+                                            {{group.name}}</option>
+                                    </select>
+                                    <div *ngIf="f2.statusMessage.invalid &&
+                                        (f2.statusMessage.dirty ||
+                                        f2.statusMessage.touched)" class="error-message">
+                                        <span *ngIf="f2.statusMessage.errors.required">
+                                            Please select Status.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="description">Order
+                                            Description</label>
+                                        <input type="text" formControlName="description" class="form-control"
+                                            id="description" placeholder="Enter description">
+                                        <div *ngIf="f2.description.invalid &&
+                                            (f2.description.dirty ||
+                                            f2.description.touched)" class="error-message">
+                                            <span *ngIf="f2.description.errors.required">
+                                                Please enter Description.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="successModal2.hide()">Close</button>
+                <button type="button" class="btn btn-success" (click)="saveOrderStatus()">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+</div>

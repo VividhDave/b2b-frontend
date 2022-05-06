@@ -1,0 +1,93 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Request For Quotation</strong>
+        </div>
+        <form [formGroup]="rfqForm">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="productName">Product Name</label>
+                  <input type="text" class="form-control"
+                         formControlName="productName"
+                         id="productName" disabled="true"
+                         placeholder="Enter product name">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-3">
+                <label for="minQuantity">Min Quantity</label>
+                <input type="number" class="form-control"
+                       formControlName="minQuantity" id="minQuantity"
+                       placeholder="Enter min quantity">
+<!--                <div *ngIf="f.price.invalid &&-->
+<!--                                        (f.price.dirty ||-->
+<!--                                        f.price.touched)"-->
+<!--                     class="error-message">-->
+<!--                                        <span-->
+<!--                                          *ngIf="f.price.errors.required">-->
+<!--                                            Please min quantity.-->
+<!--                                        </span>-->
+<!--                </div>-->
+              </div>
+              <div class="form-group col-sm-3">
+                <label for="maxQuantity">Max Quantity</label>
+                <input type="number" class="form-control"
+                       formControlName="maxQuantity" id="maxQuantity"
+                       placeholder="Enter maxQuantity">
+<!--                <div *ngIf="f.price.invalid &&-->
+<!--                                        (f.price.dirty ||-->
+<!--                                        f.price.touched)"-->
+<!--                     class="error-message">-->
+<!--                                        <span-->
+<!--                                          *ngIf="f.price.errors.required">-->
+<!--                                            Please max quantity.-->
+<!--                                        </span>-->
+<!--                </div>-->
+              </div>
+              <div class="form-group col-sm-2">
+                <label for="preferredUnitPrice">Preferred Unit Price (₹)</label>
+                <input type="number" class="form-control"
+                       formControlName="preferredUnitPrice" id="preferredUnitPrice"
+                       placeholder="Enter price">
+<!--                <div *ngIf="f.price.invalid &&-->
+<!--                                        (f.price.dirty ||-->
+<!--                                        f.price.touched)"-->
+<!--                     class="error-message">-->
+<!--                                        <span-->
+<!--                                          *ngIf="f.price.errors.required">-->
+<!--                                            Please price.-->
+<!--                                        </span>-->
+<!--                </div>-->
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-6">
+                <label for="details">Details</label>
+                <input type="text" class="form-control"
+                       formControlName="details" id="details"
+                       placeholder="Enter details">
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-sm
+                            btn-orange-theme"
+                    (click)="save()"><i class="fa fa-dot-circle-o"></i>
+              Submit
+            </button>
+            <button type="submit" class="btn btn-sm
+                            btn-orange-theme"
+                    (click)="back()"><i class="fa fa-dot-circle-o"></i>
+              Back
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

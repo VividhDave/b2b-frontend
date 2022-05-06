@@ -1,0 +1,83 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Promotion Type</strong>
+                </div>
+                <form [formGroup]="promotionTypeForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Promotion Type Name</label>
+                                    <input type="text" class="form-control"
+                                        formControlName="promoType"
+                                        id="promoType"
+                                        placeholder="Enter first name">
+                                    <div *ngIf="f.promoType.invalid &&
+                                        (f.promoType.dirty ||
+                                        f.promoType.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.promoType.errors.required">
+                                            Please enter Promotion Type.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Promotion Type Code</label>
+                                    <input type="text" class="form-control"
+                                        formControlName="promoTypeCode"
+                                        id="promoTypeCode"
+                                        placeholder="Enter last name">
+                                    <div *ngIf="f.promoTypeCode.invalid &&
+                                        (f.promoTypeCode.dirty ||
+                                        f.promoTypeCode.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.promoTypeCode.errors.required">
+                                            Please enter promotion type code.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Status</label>
+                                    <input type="text" class="form-control"
+                                        formControlName="username"
+                                        id="username"
+                                        placeholder="Enter user name" [readonly]="isReadonly">
+                                    <div *ngIf="f.username.invalid &&
+                                        (f.username.dirty ||
+                                        f.username.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.username.errors.required">
+                                            Please enter user name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme"
+                            (click)="save()"><i class="fa fa-dot-circle-o"></i>
+                            Submit</button>
+
+                            <button type="submit" class="btn btn-sm
+                            btn-orange-theme"
+                            (click)="back()"><i class="fa fa-dot-circle-o"></i>
+                            Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

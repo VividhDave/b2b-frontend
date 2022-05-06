@@ -1,0 +1,222 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>User</strong>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"> <a [routerLink]="['/user/user-list']">Web-User-List</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Web-User-View</li>
+                    </ol>
+                  </nav>
+                <form [formGroup]="userForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label for="name">First Name</label>
+                                    <input type="text" class="form-control" formControlName="firstName" id="firstName"
+                                        placeholder="Enter first name">
+                                    <div *ngIf="f.firstName.invalid &&
+                                        (f.firstName.dirty ||
+                                        f.firstName.touched)" class="error-message">
+                                        <span *ngIf="f.firstName.errors.required">
+                                            Please enter first name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Last Name</label>
+                                    <input type="text" class="form-control" formControlName="lastName" id="lastName"
+                                        placeholder="Enter last name">
+                                    <div *ngIf="f.lastName.invalid &&
+                                        (f.lastName.dirty ||
+                                        f.lastName.touched)" class="error-message">
+                                        <span *ngIf="f.lastName.errors.required">
+                                            Please enter last name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="name">User Name</label>
+                                    <input type="text" class="form-control" formControlName="username" id="username"
+                                        placeholder="Enter user name" [readonly]="isReadonly">
+                                    <div *ngIf="f.username.invalid &&
+                                        (f.username.dirty ||
+                                        f.username.touched)" class="error-message">
+                                        <span *ngIf="f.username.errors.required">
+                                            Please enter user name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" formControlName="email" id="email"
+                                        placeholder="Enter email" [readonly]="isReadonly">
+                                    <!-- <div *ngIf="f.email.invalid &&
+                                        (f.email.dirty ||
+                                        f.email.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.email.errors.required">
+                                            Please enter email.
+                                        </span>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Phone</label>
+                                    <input type="number" class="form-control"
+                                        formControlName="phone"
+                                        id="phone"
+                                        placeholder="Enter Phone No." [readonly]="isReadonly">
+                                        <div *ngIf="f.phone.invalid &&
+                                        (f.phone.dirty ||
+                                        f.phone.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.phone.errors.required">
+                                            Please enter phone.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>   -->
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Password</label>
+                                    <input type="password" class="form-control" formControlName="password" id="password"
+                                        placeholder="Enter password">
+                                    <div *ngIf="f.password.invalid &&
+                                        (f.password.dirty ||
+                                        f.password.touched)" class="error-message">
+                                        <span *ngIf="f.password.errors.required">
+                                            Please enter password.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="select3">Select Role</label>
+                                    <select id="select3" (change)="changeDropDownValue($event,'category')"
+                                        formControlName="roleId" class="form-control">
+                                        <option value="">Please select</option>
+                                        <option *ngFor="let group of
+                                    roleList" [value]="group.id">
+                                            {{group.name}}</option>
+                                    </select>
+                                    <div *ngIf="f.roleId.invalid && (f.roleId.dirty || f.roleId.touched)" class="error-message">
+                                        <span *ngIf="f.roleId.errors.required">
+                                            Please select Role.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+
+                        <!-- <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-4">
+                               
+                            </div> 
+                            
+                                <div class="col-sm-3">
+                                    <div class="form-group" >
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                formControlName="masterDataModule" id="masterDataModule">
+                                            <label class="form-check-label" for="masterDataModule">
+                                                Master Data
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                formControlName="productDataModule" id="productDataModule">
+                                            <label class="form-check-label" for="productDataModule">
+                                                Product Data
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                formControlName="orderHistoryModule" id="orderHistoryModule">
+                                            <label class="form-check-label" for="orderHistoryModule">
+                                                Order History
+                                            </label>
+                                        </div> -->
+                                        <!-- <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                formControlName="userListModule" id="userListModule">
+                                            <label class="form-check-label" for="userListModule">
+                                                User List
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                formControlName="paymentHistoryModule" id="paymentHistoryModule">
+                                            <label class="form-check-label" for="paymentHistoryModule">
+                                                Payment History
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                formControlName="logHistoryModule" id="logHistoryModule">
+                                            <label class="form-check-label" for="logHistoryModule">
+                                                Log History
+                                            </label>
+                                        </div> -->
+                                    <!-- </div> -->
+                            <!-- </div>    -->
+                            
+                            <!-- </div>
+                              
+                        </div> -->
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme" (click)="save()"><i class="fa fa-dot-circle-o"></i>
+                            Submit</button>
+
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme" style="margin-left: 10px" (click)="back()"><i class="fa fa-dot-circle-o"></i>
+                            Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="id">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i>Address List
+                    <div class="new-button">
+                        <button type="button" class="btn btn-block btn-orange-theme" (click)="create()">Add New
+                            Address</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <app-table [cols]="cols" [dataSource]="dataSource" [totalElement]="totalElement"
+                        (onSortPaginateEvent)="getAddressList($event)" [isEdit]="true" (editEvent)="edit($event)">
+                    </app-table>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+</div>

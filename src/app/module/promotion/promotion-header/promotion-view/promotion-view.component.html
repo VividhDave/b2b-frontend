@@ -1,0 +1,90 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Promotion</strong>
+                </div>
+                <form [formGroup]="promotionForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Promotion Name</label>
+                                    <input type="text" class="form-control"
+                                        formControlName="promoName"
+                                        id="promoName"
+                                        placeholder="Enter first name">
+                                    <div *ngIf="f.promoName.invalid &&
+                                        (f.promoName.dirty ||
+                                        f.promoName.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.promoName.errors.required">
+                                            Please enter promotion name.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="name">Promotion Code</label>
+                                    <input type="text" class="form-control"
+                                        formControlName="promoCode"
+                                        id="promoCode"
+                                        placeholder="Enter last name">
+                                    <div *ngIf="f.promoCode.invalid &&
+                                        (f.promoCode.dirty ||
+                                        f.promoCode.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="f.promoCode.errors.required">
+                                            Please enter promotion code.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group"
+                                    formGroupName="promotionType">
+                                    <label for="select3">Select Promotion Type</label>
+                                    <select id="select3"
+                                        (change)="changeDropDownValue($event,'promotionType')"
+                                        formControlName="id"
+                                        class="form-control">
+                                        <option value="">Please select</option>
+                                        <option *ngFor="let group of
+                                        promotionTypeList"
+                                            [value]="group.id">
+                                            {{group.name}}</option>
+                                    </select>
+                                    <div *ngIf="pt.id.invalid &&
+                                        (pt.id.dirty ||
+                                        pt.id.touched)"
+                                        class="error-message">
+                                        <span
+                                            *ngIf="pt.id.errors.required">
+                                            Please select promotion type.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme"
+                            (click)="save()"><i class="fa fa-dot-circle-o"></i>
+                            Submit</button>
+
+                        <button type="submit" class="btn btn-sm
+                            btn-orange-theme"
+                            (click)="back()"><i class="fa fa-dot-circle-o"></i>
+                            Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

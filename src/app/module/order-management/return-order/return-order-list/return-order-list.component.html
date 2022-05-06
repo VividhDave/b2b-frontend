@@ -1,0 +1,31 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i>Return Order List
+            </div>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item" aria-current="page" >Return-Order-List </li>
+                <li class="breadcrumb-item" aria-current="page" >Return-Order-View </li>
+              </ol>
+            </nav>
+            <div class="card-body">
+             <app-table 
+              [cols]="cols" 
+              [dataSource]="dataSource"  
+              [isDetails]="true" 
+              [totalElement]="totalElement" 
+              (onSortPaginateEvent)="getList($event)" 
+              (detailEvent)="details($event)"
+            >
+          </app-table>
+            </div>
+          </div>
+        </div>
+        <!--/.col-->
+      </div>
+      <!--/.row-->
+    </div>
+    

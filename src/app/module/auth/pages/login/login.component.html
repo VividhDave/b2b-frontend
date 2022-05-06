@@ -1,0 +1,70 @@
+<p-toast></p-toast>
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <!-- <a routerLink="/home">
+          <i class="fa fa-arrow-circle-left" style="font-size:48px;color:black; margin-top: 20px"></i>
+        </a> -->
+        <div class="row">
+          <div class="col-md-8 mx-auto" >
+            <div class="card-group" style="margin-top: 120px">
+              <div class="card p-4">
+                <div class="card-body">
+                  <form [formGroup]="loginForm" class="form-group">
+                    <h1>Login</h1>
+                    <p class="text-muted">Sign In to your account</p>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-user"></i></span>
+                      </div>
+                      <input type="text" class="form-control" [ngClass]="{'is-invalid':(f.username.invalid && (f.username.dirty || f.username.touched) && f.username.errors.required)}" formControlName="username" name="username"
+                        placeholder="Username" autocomplete="username" id="username" required>
+                      <div *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)" class="invalid-feedback">
+                        <span *ngIf="f.username.errors.required">
+                          Please enter username.
+                        </span>
+                      </div>
+                    </div>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-lock"></i></span>
+                      </div>
+                      <input type="password" class="form-control" [ngClass]="{'is-invalid':(f.password.invalid && (f.password.dirty || f.password.touched) && f.password.errors.required)}" id="password" formControlName="password"
+                        placeholder="Password" autocomplete="current-password" name="password" required>
+                      <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="invalid-feedback">
+                        <span *ngIf="f.password.errors.required">
+                          Please enter password.
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <button type="button" class="btn btn-primary px-4 btn-orange-theme"
+                          (click)="onSubmit()">Login</button>
+                      </div>
+                      <!-- <div class="col-6 text-right">
+                        <button type="button" class="btn btn-link px-0">Forgot
+                          password?</button>
+                      </div> -->
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="card text-white py-5 d-md-down-none card-bg"
+                style="width:44%;">
+                <div class="card-body text-center">
+                  <div>
+                    <!-- <h2>Sign up</h2> -->
+                    <!-- <p style="font-size: xx-large; padding: 2ex"><span style="color: black;">Sign in <br/> to </span><strong>MAHAVIKRETA</strong></p> -->
+                    <!-- <button type="button" class="btn btn-primary active mt-3">Register
+                      Now!</button> -->
+                      <img style="margin-top: 20px" src='../../../../../assets/img/mahaviketa.png'>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
