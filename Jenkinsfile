@@ -9,7 +9,6 @@ pipeline {
 
     stage('Build') {
       steps { 
-        bat 'unset CI'
         bat 'ng build --prod' }
     }
   }
